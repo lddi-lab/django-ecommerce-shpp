@@ -65,9 +65,16 @@
             localStorage.setItem('cart',JSON.stringify(cart));
             document.getElementById('cart').innerHTML = 'Cart('+Object.keys(cart).length +')';
 
-        });
+            // Get the popover element
+            var popover = $('[data-bs-toggle="popover"]');
 
-        //DisplayCart(cart);
+            // Update the popover content
+            newContent = DisplayCart(cart);
+            popover.attr('data-bs-content', newContent);
+            var popoverInstance = new bootstrap.Popover(popover[0]);
+            popoverInstance.update();
+
+        });
 
         function DisplayCart(cart){
             var cartString = "";
@@ -78,28 +85,12 @@
                 cartString += $('#nm'+x).text() + ' Qty: ' + cart[x] + '<br>' ;
                 cartIndex += 1;
             }
-            // $('#cart').art('data-bs-content', cartString);
             return cartString;
 
         }
-        // Get the popover element
-        var popover = $('[data-bs-toggle="popover"]');
-
-        // Update the popover content when 
-        // the update button is clicked
-        $('#cart').on('click', function () {
-            //var newContent = '<h5>GeeksforGeeks New popover content</h5>';
-            popover.attr('data-bs-content', DisplayCart(cart));
-            var popoverInstance = new bootstrap.Popover(popover[0]);
-            popoverInstance.update();
-        });
 
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
-
-
-
-
 
     </script>
 </html>
