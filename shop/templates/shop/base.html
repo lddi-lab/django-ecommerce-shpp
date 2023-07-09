@@ -24,7 +24,7 @@
                     <a class="nav-link" href="">Add Item</a>
                 </li>
                 <li class="nav-item">
-                    <button id="cart" type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom Test popover">
+                    <button id="cart" data-bs-html="true" type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom Test popover">
                         Cart(0)
                     </button>
                 </li>
@@ -67,20 +67,39 @@
 
         });
 
+        //DisplayCart(cart);
+
+        function DisplayCart(cart){
+            var cartString = "";
+            cartString += "<h5>This is your cart</h5>"
+            var cartIndex = 1;
+            for(var x in cart){
+                cartString += cartIndex;
+                cartString += $('#nm'+x).text() + ' Qty: ' + cart[x] + '<br>' ;
+                cartIndex += 1;
+            }
+            // $('#cart').art('data-bs-content', cartString);
+            return cartString;
+
+        }
         // Get the popover element
         var popover = $('[data-bs-toggle="popover"]');
+
         // Update the popover content when 
         // the update button is clicked
-        
         $('#cart').on('click', function () {
-            var newContent = 'GeeksforGeeks New popover content';
-            popover.attr('data-bs-content', newContent);
+            //var newContent = '<h5>GeeksforGeeks New popover content</h5>';
+            popover.attr('data-bs-content', DisplayCart(cart));
             var popoverInstance = new bootstrap.Popover(popover[0]);
             popoverInstance.update();
         });
 
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+
+
+
+
 
     </script>
 </html>
