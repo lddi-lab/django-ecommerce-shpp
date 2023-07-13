@@ -13,3 +13,5 @@ for (item in cart){
     $('#item_list').append(itemString);
 
 }
+
+$('#items').val(JSON.stringify(cart));
