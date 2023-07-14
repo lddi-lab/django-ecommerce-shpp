@@ -15,11 +15,11 @@ $(document).on('click','.atc',function(){
     if(cart[item_id] != undefined){
         quantity = cart[item_id][0] + 1;
         cart[item_id][0] = quantity;
-        cart[item_id][2] = cart[item_id][2] + parseFloat($('price' + item_id).text());
+        cart[item_id][2] = cart[item_id][2] + parseFloat($('#price' + item_id).text());
     }
     else{
         quantity = 1;
-        price = parseFloat($('price' + item_id).text());
+        price = parseFloat($('#price' + item_id).text());
         name = $('#nm'+item_id).text();
         cart[item_id] = [quantity, name, price];
 
