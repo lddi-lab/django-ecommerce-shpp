@@ -44,10 +44,16 @@ function DisplayCart(cart){
     cartString += "<h5>This is your cart</h5>"
     var cartIndex = 1;
 
-    for(var x in cart){
-        cartString += cartIndex;
-        cartString += $('#nm'+x).text() + ' Qty: ' + cart[x][0] + '<br>' ;
-        cartIndex += 1;
+    // for(var x in cart){
+    //     cartString += cartIndex;
+    //     cartString += $('#nm'+x).text() + ' Qty: ' + cart[x][0] + '<br>' ;
+    //     cartIndex += 1;
+    // }
+    let cartObject = JSON.parse(localStorage.getItem('cart'));
+    for (item in cartObject) {
+        console.log(cartObject[item][0]);
+        console.log(cartObject[item][1]);
+        cartString += cartObject[item][1] + "Qty: " + cartObject[item][0] + "<br>";
     }
 
     cartString += "<a href='/checkout' class='btn btn-warning' id='checkout'>Checkout</a>";
