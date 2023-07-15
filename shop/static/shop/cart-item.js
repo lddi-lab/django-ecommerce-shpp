@@ -18,6 +18,7 @@ for (item in cart){
 }
 
 var totalPrice = `<li class="list-group-item d-flex justify-content-between aligh-items-center"><b>Your total <span class="badge bg-danger rounded-pill" >$${ total }</span></b></li>`;
+$('#total').val(total);
 $('#item_list').append(totalPrice);
 
 $('#items').val(JSON.stringify(cart));
